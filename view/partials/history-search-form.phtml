@@ -1,0 +1,32 @@
+
+<form method="get" class="form-horizontal">
+	<div class="modal fade" tabindex="-1" role="dialog" id="history-search">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">
+						<i class="<?php echo $this->layout()->pageIcon; ?>" aria-hidden="true"></i>
+						<?php echo $this->translate('History Search'); ?>
+					</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="authEmail" class="col-sm-2 control-label"><?php echo $this->translate("E-Mail")?></label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="authEmail" name="authEmail" value="<?php echo $this->queryParams["authEmail"]; ?>">
+						</div>
+					</div>
+				
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $this->translate('Close'); ?></button>
+					<button type="submit" class="btn btn-primary"><?php echo $this->translate('Search'); ?></button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

@@ -1,0 +1,91 @@
+<?php
+/**
+* Pacific NM (https://www.pacificnm.com)
+*
+* @link      https://github.com/pacificnm/pacificnm-history for the canonical source repository
+* @copyright Copyright (c) 20011-2016 Pacific NM USA Inc. (https://www.pacificnm.com)
+* @license BSD-3-Clause
+*/
+?>
+<?php 
+    $json = json_decode($this->entity->getHistoryRequestParams());
+    $postParams = $json->post;
+    $routeParams = $json->route;
+    $queryParams = $json->query;
+?>
+<div class="row">
+	<div class="col-xs-12">
+		<div class="box box-primary">
+			<div class="box-header with-border">
+				<h3 class="box-title">
+					<i class="<?php echo $this->layout()->pageIcon; ?>" aria-hidden="true"></i>
+					<?php echo $this->translate($this->layout()->pageTitle); ?> 
+					<small><?php echo $this->translate("View"); ?></small>
+				</h3>
+				<div class="box-tools"></div>
+			</div>
+			<div class="box-body box-profile">
+                <h3 class="profile-username text-center">
+                	<?php if($this->entity->getAuthId() > 0): ?>
+                		<?php echo $this->entity->getAuthEntity()->getAuthName(); ?>
+                	<?php else :?>
+                		<?php echo $this->translate('Guest'); ?>
+                	<?php endif; ?>
+                </h3>
+                <p class="text-muted text-center">
+                	<?php if($this->entity->getAuthId() > 0): ?>
+                		<?php echo $this->entity->getAuthEntity()->getAuthEmail(); ?>
+                	<?php endif; ?>
+                </p>
+                <ul class="list-group list-group-unbordered">
+                    <li class="list-group-item">
+                    	<b><?php echo $this->translate('History Id'); ?>:</b>
+                    	<?php echo $this->entity->getHistoryId(); ?>
+                    </li>
+                    <li class="list-group-item">
+                    	<b><?php echo $this->translate('Auth Id'); ?>:</b>
+                    	<?php echo $this->entity->getAuthId(); ?>
+                    </li>
+                    <li class="list-group-item">
+                    	<b><?php echo $this->translate('Request'); ?>:</b>
+                    	<?php echo $this->entity->getHistoryRequest(); ?>
+                    </li>
+                    <li class="list-group-item">
+                    	<b><?php echo $this->translate('Type'); ?>:</b>
+                    	<?php echo $this->entity->getHistoryRequestType(); ?>
+                    </li>
+                    <li class="list-group-item">
+                    	<b><?php echo $this->translate('Request Time'); ?>:</b>
+                    	<?php echo date($this->appConfig()->getConfigDateLong(), $this->entity->getHistoryRequestTime()); ?>
+                    </li>
+                    <li class="list-group-item">
+                    	<b><?php echo $this->translate('Ip Address'); ?>:</b>
+                    	<?php echo $this->entity->getHistoryRemoteAddress(); ?>
+                    </li>
+                    <li class="list-group-item">
+                    	<b><?php echo $this->translate('Browser'); ?>:</b>
+                    	<?php echo $this->entity->getHistoryRemoteBrowser(); ?>
+                    </li>
+                    <li class="list-group-item">
+                    	<b><?php echo $this->translate('Route'); ?>:</b><br />
+                    	<?php foreach ($routeParams as $key => $value): ?>
+                    	<b><?php echo $key?>:</b> <?php echo $this->escapehtml($value); ?><br />
+                    	<?php endforeach;?>
+                    </li>
+                    <li class="list-group-item">
+                    	<b><?php echo $this->translate('Query'); ?>:</b><br />
+                    	<?php foreach ($queryParams as $key => $value): ?>
+                    	<b><?php echo $key?>:</b> <?php echo $this->escapehtml($value); ?><br />
+                    	<?php endforeach;?>
+                    </li>
+                    <li class="list-group-item">
+                    	<b><?php echo $this->translate('Post'); ?>:</b><br />
+                    	<?php foreach ($postParams as $key => $value): ?>
+                    	<b><?php echo $key?>:</b> <?php echo $this->escapehtml($value); ?><br />
+                    	<?php endforeach;?>
+                    </li>
+                </ul>
+            </div>
+		</div>
+	</div>
+</div>
