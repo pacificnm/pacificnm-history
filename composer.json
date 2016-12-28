@@ -26,6 +26,6 @@
     	"pacificnm/pacificnm-menu" : "dev-master",
     	"pacificnm/pacificnm-module" : "dev-master",
     	"pacificnm/pacificnm-page" : "dev-master",
-    	"pacificnm/pacificnm-update" : "dev-master",
+    	"pacificnm/pacificnm-update" : "dev-master"
     }
 }
