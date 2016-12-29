@@ -10,7 +10,7 @@ return array(
     'module' => array(
         'History' => array(
             'name' => 'History',
-            'version' => '1.0.3',
+            'version' => '1.0.4',
             'install' => array(
                 'require' => array(),
                 'sql' => 'sql/history.sql'
