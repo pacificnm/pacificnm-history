@@ -10,7 +10,7 @@ return array(
     'module' => array(
         'History' => array(
             'name' => 'History',
-            'version' => '1.0.5',
+            'version' => '1.0.6',
             'install' => array(
                 'require' => array(),
                 'sql' => 'sql/history.sql'
@@ -160,6 +160,16 @@ return array(
         ),
     ),
     'view_manager' => array(
+        'controller_map' => array(
+            'Pacificnm\History' => true
+        ),
+        'template_map' => array(
+            'pacificnm/history/create/index' => __DIR__ . '/../view/history/create/index.phtml',
+            'pacificnm/history/delete/index' => __DIR__ . '/../view/history/delete/index.phtml',
+            'pacificnm/history/index/index' => __DIR__ . '/../view/history/index/index.phtml',
+            'pacificnm/history/update/index' => __DIR__ . '/../view/history/update/index.phtml',
+            'pacificnm/history/view/index' => __DIR__ . '/../view/history/view/index.phtml',
+        ),
         'template_path_stack' => array(
             __DIR__ . '/../view'
         )

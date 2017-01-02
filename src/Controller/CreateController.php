@@ -6,12 +6,12 @@
  * @copyright Copyright (c) 20011-2016 Pacific NM USA Inc. (https://www.pacificnm.com)
  * @license BSD-3-Clause
  */
-namespace History\Controller;
+namespace Pacificnm\History\Controller;
 
-use Application\Controller\AbstractApplicationController;
 use Zend\View\Model\ViewModel;
-use History\Service\ServiceInterface;
-use History\Form\Form;
+use Pacificnm\Application\Controller\AbstractApplicationController;
+use Pacificnm\History\Service\ServiceInterface;
+use Pacificnm\History\Form\Form;
 
 class CreateController extends AbstractApplicationController
 {

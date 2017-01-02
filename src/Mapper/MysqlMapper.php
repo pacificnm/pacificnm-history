@@ -47,7 +47,7 @@ class MysqlMapper extends AbstractMysqlMapper implements MysqlMapperInterface
                     
         $this->joinAuth()->joinAclRole();
         
-        $this->filter($filter); 
+        $this->filter($filter)->sort($filter); 
 
         if (array_key_exists('pagination', $filter)) {
             if ($filter['pagination'] == 'off') {  
@@ -136,9 +136,34 @@ class MysqlMapper extends AbstractMysqlMapper implements MysqlMapperInterface
             $this->select->where->like('auth.auth_email', $filter['authEmail'] . '%');
         }
         
+        //auth id
+        if(array_key_exists('authId', $filter) && $filter['authId'] > 0) {
+            $this->select->where(array(
+                'history.auth_id = ?' => $filter['authId']
+            ));
+        }
+        
         return $this;
     }
 
+    /**
+     * 
+     * @param array $filter
+     * @return \Pacificnm\History\Mapper\MysqlMapper
+     */
+    protected function sort($filter) 
+    {
+        if(array_key_exists('historyRequestTimeAsc', $filter)) {
+            $this->select->order('history_request_time ASC');
+        }
+        
+        if(array_key_exists('historyRequestTimeDesc', $filter)) {
+            $this->select->order('history_request_time DESC');
+        }
+    
+        return $this;
+    }
+    
     /**
      * 
      * @return \History\Mapper\MysqlMapper

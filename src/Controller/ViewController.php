@@ -6,11 +6,11 @@
  * @copyright Copyright (c) 20011-2016 Pacific NM USA Inc. (https://www.pacificnm.com)
  * @license BSD-3-Clause
  */
-namespace History\Controller;
+namespace Pacificnm\History\Controller;
 
-use Application\Controller\AbstractApplicationController;
 use Zend\View\Model\ViewModel;
-use History\Service\ServiceInterface;
+use Pacificnm\Controller\AbstractApplicationController;
+use Pacificnm\History\Service\ServiceInterface;
 
 class ViewController extends AbstractApplicationController
 {
@@ -18,7 +18,8 @@ class ViewController extends AbstractApplicationController
     protected $service = null;
 
     /**
-     * @param ServiceInterface $service
+     *
+     * @param ServiceInterface $service            
      */
     public function __construct(ServiceInterface $service)
     {
@@ -26,6 +27,7 @@ class ViewController extends AbstractApplicationController
     }
 
     /**
+     *
      * {@inheritdoc}
      *
      * @see \Zend\Mvc\Controller\AbstractActionController::indexAction()
@@ -33,27 +35,27 @@ class ViewController extends AbstractApplicationController
     public function indexAction()
     {
         parent::indexAction();
-
+        
         $id = $this->params()->fromRoute('id');
-
+        
         $entity = $this->service->get($id);
-
-        if(! $entity) {
-        	$this->flashMessenger()->addErrorMessage('Object was not found');
-        	return $this->redirect()->toRoute('history-index');
+        
+        if (! $entity) {
+            $this->flashMessenger()->addErrorMessage('Object was not found');
+            return $this->redirect()->toRoute('history-index');
         }
-
+        
         $this->getEventManager()->trigger('historyView', $this, array(
-        	'authId' => $this->identity()->getAuthId(),
-        	'requestUrl' => $this->getRequest()->getUri(),
-        	'historyEntity' => $entity
+            'authId' => $this->identity()
+                ->getAuthId(),
+            'requestUrl' => $this->getRequest()
+                ->getUri(),
+            'historyEntity' => $entity
         ));
-
+        
         return new ViewModel(array(
-        	'entity' => $entity
+            'entity' => $entity
         ));
     }
-
-
 }
 
