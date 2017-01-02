@@ -6,14 +6,14 @@
  * @copyright Copyright (c) 20011-2016 Pacific NM USA Inc. (https://www.pacificnm.com)
  * @license BSD-3-Clause
  */
-namespace History\Controller;
+namespace Pacificnm\History\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Console\Adapter\AdapterInterface as Console;
 use Zend\Console\Request as ConsoleRequest;
 use RuntimeException;
 use Zend\Console\Adapter\AdapterInterface;
-use History\Service\ServiceInterface;
+use Pacificnm\History\Service\ServiceInterface;
 
 class ConsoleController extends AbstractActionController
 {
